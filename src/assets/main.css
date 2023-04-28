@@ -1,0 +1,87 @@
+@import "./base.css";
+
+body {
+  font-family: sans-serif;
+  background-color: rgb(219, 230, 218);
+  color: black;
+}
+
+.navbar-brand {
+  color: hsl(122, 39%, 49%) !important;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.navbar-brand img {
+  margin-right: 20px;
+  margin-left: 15px;
+}
+
+.nav-link {
+  color: hsl(122, 39%, 49%) !important;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.carousel-item img {
+  border-radius: 15%;
+}
+
+.border {
+  border-color: rgb(14, 98, 16) !important;
+}
+
+footer {
+  font-size: large;
+  color: black;
+}
+
+h6 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-top: 2px solid #555;
+  border-bottom: 2px solid #555;
+  padding: 10px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-top: 2px solid #555;
+  border-bottom: 2px solid #555;
+  padding: 10px;
+}
+
+p {
+  font-size: 20px;
+}
+
+li {
+  font-size: 17px;
+}
+
+.router-link {
+  color: hsl(122, 39%, 49%);
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 5px 10px;
+  margin: 0 10px;
+}
+
+.router-link-active {
+  border-bottom: 2px solid hsl(122, 39%, 49%);
+}
+
+.router-link:hover {
+  color: darkgreen !important;
+}
