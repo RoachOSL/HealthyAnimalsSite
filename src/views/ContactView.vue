@@ -25,7 +25,7 @@
                 <!-- Disable Captcha-->
                 <input type="hidden" name="_captcha" value="false">
 
-                <input type="hidden" name="_next" value="https://roachosl.github.io/HealthyAnimalsSite/succes">
+               
 
                 <div class="col-md-5">
                     <label for="firstName">Name:</label>
