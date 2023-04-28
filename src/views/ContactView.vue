@@ -18,7 +18,7 @@
 
     <div class="container">
         <div class="col-md-8 mx-auto" >
-            <form class="row g-3" action="https://formsubmit.co/45e01e9003d1f20987ad6f09a49af148" method="POST">
+            <form class="row g-3" action="https://formsubmit.co/projektpsm01@gmail.com" method="POST">
                 <!-- Honeypot -->
                 <input type="text" name="_honey" style="display: none">
 
