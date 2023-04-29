@@ -17,15 +17,13 @@
     </div>
 
     <div class="container">
-        <div class="col-md-8 mx-auto" >
+        <div class="col-md-8 mx-auto">
             <form class="row g-3" action="https://formsubmit.co/45e01e9003d1f20987ad6f09a49af148" method="POST">
                 <!-- Honeypot -->
                 <input type="text" name="_honey" style="display: none">
 
                 <!-- Disable Captcha-->
                 <input type="hidden" name="_captcha" value="false">
-                
-                <input type="hidden" name="_next" value="https://roachosl.github.io/HealthyAnimalsSite/succes">
 
                 <div class="col-md-5">
                     <label for="firstName">Name:</label>
@@ -37,7 +35,8 @@
                 </div>
                 <div class="col-md-12">
                     <label for="message">Message:</label>
-                    <textarea class="form-control" name="Comments,&nbsp;questions:" id="message" rows="5" required></textarea>
+                    <textarea class="form-control" name="Comments,&nbsp;questions:" id="message" rows="5"
+                        required></textarea>
                 </div>
                 <div class="col-md-12 text-center">
                     <button type="submit" class="btn-lg btn-primary">Submit</button>
@@ -46,5 +45,7 @@
         </div>
     </div>
 </template>
+
+
 
 

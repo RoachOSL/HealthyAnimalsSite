@@ -37,7 +37,7 @@ import { RouterView, RouterLink } from 'vue-router';
 
     <hr class="border border-2">
     
-    <RouterView />
+    <RouterView/>
 
     <hr class="border border-2" />
 
