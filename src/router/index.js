@@ -2,7 +2,7 @@ import {createRouter, createWebHistory} from "vue-router"
 import HomeView from "../views/HomeView.vue"
 import AboutView from "../views/AboutView.vue"
 import ContactView from "../views/ContactView.vue"
-import Succes from "../views/Succes.vue"
+import Succes from "../views/Success.vue"
 
 
 
@@ -26,9 +26,9 @@ const router = createRouter({
             component: ContactView
         },
         {
-            path:"/succes",
-            name:"succes",
-            component: Succes
+            path:"/success",
+            name:"success",
+            component: Success
         }
     ]
 })
