@@ -1,6 +1,15 @@
 <script setup>
 import { RouterView, RouterLink } from 'vue-router';
+import LoggedContent from "../src/views/LoggedContent.vue";
 
+const loggedIn = true;
+
+</script>
+
+<script>
+const user_second = "Adrian";
+
+export const user = user_second;
 </script>
 
 <template>
@@ -18,11 +27,14 @@ import { RouterView, RouterLink } from 'vue-router';
 
         <div class="collapse navbar-collapse" id="toggleMobileMenu">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <RouterLink class="router-link"  to="/login">Login</RouterLink>
+            <li class="nav-item" v-if="!user">
+              <RouterLink class="router-link" to="/login">Login</RouterLink>
+            </li>
+            <li class="nav-item" v-else>
+              <span class="navbar-text" v-bind:data-username="user"></span>
             </li>
             <li class="nav-item">
-              <RouterLink class="router-link"  to="/">Home</RouterLink>
+              <RouterLink class="router-link" to="/">Home</RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink class="router-link" to="/about">About</RouterLink>
@@ -35,9 +47,14 @@ import { RouterView, RouterLink } from 'vue-router';
       </div>
     </nav>
 
-    <hr class="border border-2">
-    
-    <RouterView/>
+    <hr class="border border-2" />
+
+    <template v-if="loggedIn">
+      <LoggedContent />
+    </template>
+    <template v-else>
+      <RouterView />
+    </template>
 
     <hr class="border border-2" />
 
