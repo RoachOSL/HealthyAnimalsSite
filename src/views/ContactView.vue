@@ -27,7 +27,7 @@
                 <!-- Disable Captcha-->
                 <input type="hidden" name="_captcha" value="false">
 
-                <input type="hidden" name="_next" :value="nextUrl">
+                <input type="hidden" name="_next" value="https://roachosl.github.io/HealthyAnimalsSite/">
            
                 <div class="col-md-5">
                     <label for="firstName">Name:</label>
@@ -50,15 +50,6 @@
     </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      nextUrl: `${window.location.origin}/HealthyAnimalsSite/success`
-    }
-  }
-}
-</script>
 
 
 

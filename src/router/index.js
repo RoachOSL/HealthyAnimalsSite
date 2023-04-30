@@ -25,12 +25,7 @@ const router = createRouter({
             name:"contact",
             component: ContactView
         },
-        {
-            path:"/success",
-            name:"success",
-            component: Success
-        }
     ]
 })
-
+r
 export default router
