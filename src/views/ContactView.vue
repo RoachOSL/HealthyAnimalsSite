@@ -66,7 +66,7 @@ export default {
   },
   computed: {
     nextUrl() {
-      return "./succes"; 
+      return "/HealthyAnimalsSite/succes"; 
     },
   },
   methods: {
