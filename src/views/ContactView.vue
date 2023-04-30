@@ -74,7 +74,7 @@ export default {
       axios.post(this.submitUrl, this.formData)
         .then(response => {
           console.log(response.data); 
-          window.location.href = this.nextUrl; 
+          this.$router.push({name: 'success'}); 
         })
         .catch(error => {
           console.log(error.response.data); 
