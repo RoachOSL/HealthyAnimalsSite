@@ -1,8 +1,9 @@
+
 <template>
-     <div class="container">
+  <div class="container">
     <h2>List of Pets</h2>
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-12">
         <table class="table">
           <thead>
             <tr>
@@ -22,46 +23,45 @@
       </div>
     </div>
   </div>
-
 </template>
 <script>
 export default {
-    name: "PetList",
-    data() {
-      return {
-        newPet: {
-          name: "",
-          type: "",
-          age: null,
-        },
-        pets: [{
-          name: "Oskar",
-          type: "Dog",
-          age: 18,
-        }],
+  name: "PetList",
+  data() {
+    return {
+      newPet: {
+        name: "",
+        type: "",
+        age: null,
+      },
+      pets: [{
+        name: "Oskar",
+        type: "Dog",
+        age: 18,
+      }],
+    };
+  },
+  created() {
+    this.getPets();
+  },
+  methods: {
+    async addPet() {
+      const db = firebase.firestore();
+      const petRef = db.collection("pets").doc();
+      this.newPet.id = petRef.id;
+      await petRef.set(this.newPet);
+      this.newPet = {
+        name: "",
+        type: "",
+        age: null,
       };
-    },
-    created() {
       this.getPets();
     },
-    methods: {
-      async addPet() {
-        const db = firebase.firestore();
-        const petRef = db.collection("pets").doc();
-        this.newPet.id = petRef.id;
-        await petRef.set(this.newPet);
-        this.newPet = {
-          name: "",
-          type: "",
-          age: null,
-        };
-        this.getPets();
-      },
-      async getPets() {
-        const db = firebase.firestore();
-        const petCollection = await db.collection("pets").get();
-        this.pets = petCollection.docs.map((doc) => doc.data());
-      },
+    async getPets() {
+      const db = firebase.firestore();
+      const petCollection = await db.collection("pets").get();
+      this.pets = petCollection.docs.map((doc) => doc.data());
     },
-  };
-  </script>
+  },
+};
+</script>

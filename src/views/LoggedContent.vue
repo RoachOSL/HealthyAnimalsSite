@@ -29,19 +29,19 @@ export default {
             <div class="sidebar">
                 <ul>
                     <li>
-                        <RouterLink class="router-link" to="">Find vet</RouterLink>
+                        <RouterLink class="sidebar-link" to="/">Find vet</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="router-link" to="/addAnimal">Add animal</RouterLink>
+                        <RouterLink class="sidebar-link" to="/addAnimal">Add animal</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="router-link" to="/showPets">Show pets</RouterLink>
+                        <RouterLink class="sidebar-link" to="/showPets">Show pets</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="router-link" to="/makeAppointment">Make an appointment</RouterLink>
+                        <RouterLink class="sidebar-link" to="/makeAppointment">Make an appointment</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="router-link" to="/showAppointment">Show an appointment</RouterLink>
+                        <RouterLink class="sidebar-link" to="/showAppointment">Show appointments</RouterLink>
                     </li>
                 </ul>
             </div>

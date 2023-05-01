@@ -7,7 +7,7 @@ const loggedIn = true;
 </script>
 
 <script>
-const user_second = "Adrian";
+const user_second = "Oskar";
 
 export const user = user_second;
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-sm-8 col-md-8">
+            <div class="col-sm-10 col-md-10">
                 <h2>About Us</h2>
                 <p> We are a team of experienced veterinarians and animal lovers who are passionate about animals
                     and committed to ensuring that they receive the best possible care. With years of experience and a deep
@@ -22,7 +22,7 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-sm-8 col-md-8">
+            <div class="col-sm-10 col-md-10">
                 <h2>Our Services</h2>
                 <p>We offer a wide range of services to meet all of your pet care needs, including:</p>
                 <ul>
