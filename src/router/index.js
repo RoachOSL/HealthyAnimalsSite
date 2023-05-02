@@ -8,6 +8,7 @@ import addAnimal from "../views/addAnimal.vue";
 import makeAppointment from "../views/makeAppointment.vue";
 import showPets from "../views/showPets.vue";
 import showAppointment from "../views/showAppointment.vue";
+import findVet from "../views/findVet.vue"
 
 
 
@@ -59,6 +60,11 @@ const router = createRouter({
         name: "shAppo",
         component: showAppointment,
     },
+    {
+      path: "/findVet",
+      name: "fVet",
+      component: findVet,
+  },
   ],
 });
 

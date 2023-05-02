@@ -19,7 +19,8 @@
 
     <div class="container">
         <div class="col-sm-9 col-md-9 mx-auto">
-            <form class="row g-3" action="https://formsubmit.co/45e01e9003d1f20987ad6f09a49af148" method="POST">
+            <form class="row g-3" action="https://formsubmit.co/45e01e9003d1f20987ad6f09a49af148" method="POST"
+                enctype="multipart/form-data">
                 <!-- Honeypot -->
                 <input type="text" name="_honey" style="display: none">
 
@@ -48,9 +49,84 @@
                     <button type="submit" class="btn-lg btn-primary">Submit</button>
                 </div>
             </form>
+            <div class="microButtons text-center">
+                <button class="start" @click="startRecording">Start Recording</button>
+                <button class="stop" @click="stopRecording">Stop Recording</button>
+                <button @click="playRecording">Play Recording</button>
+                <a :href="audioURL" download="recording.wav">Download Recording</a>
+            </div>
         </div>
     </div>
 </template>
+
+<style scoped>
+.microButtons {
+    margin-top: 15px;
+}
+
+.microButtons button,
+.microButtons a {
+    text-align: center;
+    border: 2px solid black;
+    color: white;
+    background-color: #2196F3;
+    padding: 12px 24px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.microButtons button.start {
+    background-color: green;
+}
+
+.microButtons button.stop {
+    background-color: red;
+}
+
+.microButtons button:hover,
+.microButtons a:hover {
+    background-color: #0c7cd5;
+}
+</style>
+
+<script>
+export default {
+    data() {
+        return {
+            mediaRecorder: null,
+            audioChunks: [],
+            audioURL: null,
+        };
+    },
+    methods: {
+        async startRecording() {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            this.mediaRecorder = new MediaRecorder(stream);
+            this.mediaRecorder.addEventListener('dataavailable', (event) => {
+                this.audioChunks.push(event.data);
+            });
+            this.mediaRecorder.addEventListener('stop', () => {
+                const audioBlob = new Blob(this.audioChunks);
+                this.audioURL = URL.createObjectURL(audioBlob);
+            });
+            alert('Microphone recording started!');
+            this.mediaRecorder.start();
+        },
+        stopRecording() {
+            this.mediaRecorder.stop();
+        },
+        playRecording() {
+            const audio = new Audio(this.audioURL);
+            audio.play();
+        },
+    },
+};
+</script>
 
 
 

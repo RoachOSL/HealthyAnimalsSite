@@ -29,7 +29,7 @@ export default {
             <div class="sidebar">
                 <ul>
                     <li>
-                        <RouterLink class="sidebar-link" to="/">Find vet</RouterLink>
+                        <RouterLink class="sidebar-link" to="/findVet">Find vet</RouterLink>
                     </li>
                     <li>
                         <RouterLink class="sidebar-link" to="/addAnimal">Add animal</RouterLink>

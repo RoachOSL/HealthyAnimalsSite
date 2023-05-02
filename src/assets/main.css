@@ -209,8 +209,6 @@ label[for="register-name"] {
   color: #555;
 }
 
-
-
 .sidebar {
   border: 2px solid hsl(122, 39%, 49%);
   border-radius: 35px;
@@ -243,9 +241,6 @@ label[for="register-name"] {
   margin: 0 10px;
 }
 
-
-
-
 .addApoinment {
   padding: 20px;
   margin: 15px;
@@ -260,5 +255,7 @@ label[for="register-name"] {
 .addApoinment select {
   margin-bottom: 10px;
 }
+
+
 
 
