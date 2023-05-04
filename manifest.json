@@ -4,13 +4,13 @@
   "description": "My First PWA",
   "icons": [
     {
-      "src": "/assets/manifestLogo-192.png",
+      "src": "/assets/manifestLogo-192-*.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "/assets/manifestLogo-512.png",
+      "src": "/assets/manifestLogo-512-*.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
