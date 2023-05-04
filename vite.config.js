@@ -18,6 +18,17 @@ export default defineConfig({
         assetFileNames: 'assets/[name].[ext]', // Customize the output path of assets
       },
     },
+    // Copy the images folder to the dist folder
+    outDir: 'dist',
+    assetsDir: 'assets',
+    assetsInlineLimit: 0,
+    rollupOptions: {
+      input: {
+        main: './index.html',
+        'manifestLogo-192': './images/manifestLogo-192.png',
+        'manifestLogo-512': './images/manifestLogo-512.png',
+      },
+    },
   },
   optimizeDeps: {
     include: ['leaflet'], // Add Leaflet to the list of dependencies to optimize
