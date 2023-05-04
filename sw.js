@@ -4,6 +4,9 @@ const assets = [
   "/HealthyAnimalsSite/src/assets/main.css",
   "/HealthyAnimalsSite/src/main.js",
   "/HealthyAnimalsSite/images/logo.jpg",
+  "/HealthyAnimalsSite/images/Cat.jpg",
+  "/HealthyAnimalsSite/images/Dog.jpg",
+  "/HealthyAnimalsSite/images/guineaPig.jpg",
   "/HealthyAnimalsSite/manifestLogo-192.png",
   "/HealthyAnimalsSite/manifestLogo-512.png"
 ]
