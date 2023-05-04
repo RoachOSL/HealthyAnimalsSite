@@ -24,7 +24,7 @@ export default defineConfig({
     assetsInlineLimit: 0,
     rollupOptions: {
       input: {
-        main: './index.html',
+        main: './src/main.js',
         'manifestLogo-192': './images/manifestLogo-192.png',
         'manifestLogo-512': './images/manifestLogo-512.png',
       },
