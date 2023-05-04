@@ -13,7 +13,7 @@ import findVet from "../views/findVet.vue"
 
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
