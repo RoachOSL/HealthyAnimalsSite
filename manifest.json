@@ -4,20 +4,20 @@
   "description": "My First PWA",
   "icons": [
     {
-      "src": "images/manifestLogo-192.png",
+      "src": "/assets/Logo-2ce7b6f0.jpg",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "images/manifestLogo-512.png",
+      "src": "/assets/Logo-2ce7b6f0.jpg",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
     }
   ],
-  "start_url": "/HealthyAnimalsSite/",
-  "scope":"/HealthyAnimalsSite/",
+  "start_url": "/index.html",
+  "scope":"/index.html",
   "background_color": "black",
   "display": "standalone",
   "theme_color": "white"
