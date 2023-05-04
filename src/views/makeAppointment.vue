@@ -26,7 +26,7 @@
 </template>
 <script>
 // Import the functions you need from the SDKs you need
-import {collection, addDoc} from 'firebase/firestore';
+import {collection, addDoc, Timestamp} from 'firebase/firestore';
 import {auth, db} from "../main";
 
 
@@ -40,7 +40,7 @@ export default {
 
             const docRef = await addDoc(collection(db, 'appointments'), {
                 animalName: appoAnimalName,
-                date: appoDate,
+                date: Timestamp.fromDate(new Date(appoDate)),
                 owner: this.email,
                 vetName: appoVetName
             });

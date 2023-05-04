@@ -42,6 +42,17 @@ export default {
       async getAppointments() {
           const querySnapshot = await getDocs(collection(db, 'appointments'));
           const user = auth.currentUser;
+
+          const formatTimestamp = (timestamp) => {
+              const date = new Date(timestamp.seconds * 1000);
+              const year = date.getFullYear();
+              const month = ('0' + (date.getMonth() + 1)).slice(-2);
+              const day = ('0' + date.getDate()).slice(-2);
+              const hours = ('0' + date.getHours()).slice(-2);
+              const minutes = ('0' + date.getMinutes()).slice(-2);
+              return `${year}-${month}-${day} ${hours}:${minutes}`;
+          }
+
           if (user) {
               this.email = user.email;
               querySnapshot.forEach((doc) => {
@@ -49,7 +60,7 @@ export default {
                   if (data.owner === user.email) {
                       this.appointments.push({
                           animalName: data.animalName,
-                          date: data.date,
+                          date: formatTimestamp(data.date),
                           owner: data.owner,
                           vetName: data.vetName,
                       });
