@@ -39,7 +39,6 @@
                         <button class="buttonPhoto" @click="takePhoto">Take Photo</button>
                         <a class="button download-button" :href="photo" download="photo.jpg">Download Photo</a>
                         <button class="buttonStopCam" @click="stopCamera">Stop Camera</button>
-                        
                     </div>
                 </div>
             </div>

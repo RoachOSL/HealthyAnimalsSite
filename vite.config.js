@@ -9,5 +9,22 @@ export default defineConfig({
   optimizeDeps: {
     include: ['leaflet'], // Add Leaflet to the list of dependencies to optimize
   },
-  publicDir: 'public', // Specify the location of the public directory containing the manifest file
+  publicDir: 'public',
+  build: {
+    rollupOptions: {
+      input: {
+        main: './index.html'
+      },
+      output: {
+        manualChunks: undefined
+      }
+    }
+  },
+  manifest: {
+    src: './public/manifest.json'
+  },
+  serviceWorker: {
+    src: './src/sw.js',
+    scope: '/'
+  }
 });

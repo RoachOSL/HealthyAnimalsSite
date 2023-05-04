@@ -7,9 +7,9 @@ const loggedIn = true;
 </script>
 
 <script>
-const user_second = "Oskar";
+const user_second = true;
 
-export const user = user_second;
+export const user = "Oskar";
 </script>
 
 <template>
