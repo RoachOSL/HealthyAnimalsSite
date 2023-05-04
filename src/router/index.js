@@ -64,7 +64,11 @@ const router = createRouter({
       path: "/findVet",
       name: "fVet",
       component: findVet,
-  },
+    },
+    {
+      path: '/:catchAll(.*)',
+      redirect: '/'
+    }
   ],
 });
 
