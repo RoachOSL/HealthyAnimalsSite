@@ -27,10 +27,10 @@
             <button type="button" @click="registerWithEmailAndPassword()">Zarejestruj</button>
         </form>
 
-        <h1>Wyloguj się</h1>
-        <form id="signOutForm">
-            <button type="button" @click="signOut()">Wyloguj!</button>
-        </form>
+<!--        <h1>Wyloguj się</h1>-->
+<!--        <form id="signOutForm">-->
+<!--            <button type="button" @click="logOut()">Wyloguj!</button>-->
+<!--        </form>-->
     </div>
 </template>
 
@@ -119,13 +119,13 @@ export default {
                     alert('Błąd rejestracji przez Google - ' + errorCode + ' - ' + errorMessage);
                 });
         },
-        signOut() {
-            auth.signOut()
-                .then(() => {
-                    console.log(`User logged out.`);
-                });
-            this.user = null;
-        },
+        // logOut() {
+        //     auth.signOut()
+        //         .then(() => {
+        //             console.log(`User logged out.`);
+        //         });
+        //     this.user = null;
+        // },
     },
     mounted() {
         onAuthStateChanged(auth, (user) => {

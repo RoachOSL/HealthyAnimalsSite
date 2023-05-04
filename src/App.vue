@@ -13,6 +13,15 @@ export default {
             userEmail: null
         }
     },
+    methods: {
+        logOut() {
+            auth.signOut()
+                .then(() => {
+                    console.log(`User logged out.`);
+                });
+            this.user = null;
+        },
+    },
     mounted() {
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -46,6 +55,9 @@ export default {
                         </li>
                         <li class="nav-item" v-else>
                             <span class="navbar-text" v-bind:data-username="userEmail"></span>
+                        </li>
+                        <li class="nav-item" v-if="userEmail">
+                            <RouterLink class="router-link" @click="logOut" to="/">Log out</RouterLink>
                         </li>
                         <li class="nav-item">
                             <RouterLink class="router-link" to="/">Home</RouterLink>
