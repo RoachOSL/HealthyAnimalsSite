@@ -1,5 +1,5 @@
 <template>
-    <div class="container col-sm-4 col-md-4 text-center">
+    <div class="container col-sm-4 col-md-4 text-center" v-if="!userEmail">
         <h1>Login form:</h1>
         <form id="logInForm">
             <div class="row">
