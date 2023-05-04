@@ -75,9 +75,7 @@ export default {
             const animalBirthDate = dodawanie.animalBirthDate.value;
             const animalPhoto = dodawanie.animalPhoto.files[0];
             let animalPhotoLink = null;
-            // console.log(animalName);
-            // if (animalName != null && animalSpecies != null) {
-            // if (!animalName && !animalSpecies && !animalGender && !animalBirthDate && !animalPhoto) {
+            if (animalName !== '' && animalSpecies !== '' && animalGender !== '' && animalBirthDate !== '' && animalPhoto) {
                 const usersRef = collection(db, 'users');
                 const q = query(usersRef, where('email', '==', this.email));
                 const querySnapshot = await getDocs(q);
@@ -104,9 +102,9 @@ export default {
                     }
                 });
                 dodawanie.reset();
-            // } else {
-            //     alert(`All fields are required!`);
-            // }
+            } else {
+                alert(`All fields are required!`);
+            }
         },
         takePhoto() {
             const canvas = document.createElement("canvas");

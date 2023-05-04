@@ -1,10 +1,8 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import router from "./router";
-import "./assets/main.css";
-import { initializeApp } from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+import './assets/main.css'
+import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
