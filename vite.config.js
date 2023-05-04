@@ -6,23 +6,6 @@ export default defineConfig({
   plugins: [
     vue()
   ],
-  resolve: {
-    alias: {
-      '@': '/src'
-    }
-  },
-  build: {
-    assetsInlineLimit: 0, // Disable inlining assets for larger files such as images and fonts
-    rollupOptions: {
-      output: {
-        assetFileNames: 'assets/[name].[ext]', // Customize the output path of assets
-      },
-    },
-    // Copy the images folder to the dist folder
-    outDir: 'dist',
-    assetsDir: 'assets',
-    assetsInlineLimit: 0,
-  },
   optimizeDeps: {
     include: ['leaflet'], // Add Leaflet to the list of dependencies to optimize
   },
