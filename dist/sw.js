@@ -4,8 +4,8 @@ const assets = [
   "/src/assets/main.css",
   "/src/main.js",
   "/images/logo.jpg",
-  "/images/manifestLogo-192.png",
-  "/images/manifestLogo-512.png"
+  "/manifestLogo-192.png",
+  "/manifestLogo-512.png"
 ]
 
 self.addEventListener("install", installEvent => {
