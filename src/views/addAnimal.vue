@@ -5,27 +5,36 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="form-group">
-                            <label for="animalName">Imię zwierzaka:</label><input type="text" class="form-control" id="animalName" name="animalName" required>
+                            <label for="animalName">Animal name:</label><input type="text" class="form-control"
+                                                                               id="animalName" name="animalName"
+                                                                               required>
                         </div>
                         <div class="form-group">
-                            <label for="animalSpecies">Gatunek:</label><input type="text" class="form-control" id="animalSpecies" name="animalSpecies" required>
+                            <label for="animalSpecies">Species:</label><input type="text" class="form-control"
+                                                                              id="animalSpecies" name="animalSpecies"
+                                                                              required>
                         </div>
                         <div class="form-group">
-                            <label for="animalGender">Płeć:</label>
+                            <label for="animalGender">Gender:</label>
                             <select class="form-control" id="animalGender" name="animalGender" required>
-                                <option value="samiec">Samiec</option>
-                                <option value="samica">Samica</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="animalBirthDate">Data urodzenia:</label><input type="date" class="form-control" id="animalBirthDate" name="animalBirthDate" required>
+                            <label for="animalBirthDate">Birth date:</label><input type="date" class="form-control"
+                                                                                   id="animalBirthDate"
+                                                                                   name="animalBirthDate" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="animalPhoto">Zdjęcie zwierzaka:</label><input type="file" class="form-control-file" id="animalPhoto" name="animalPhoto" required>
+                        <label for="animalPhoto">Animal photo:</label><input type="file" class="form-control-file"
+                                                                             id="animalPhoto" name="animalPhoto"
+                                                                             required>
                     </div>
                     <div class="col-md-12">
-                        <button type="button" class="btn btn-primary" @click="addAnimalToLoggedUser()">Dodaj zwierzaka!</button>
+                        <button type="button" class="btn btn-primary" @click="addAnimalToLoggedUser()">Add animal!
+                        </button>
                     </div>
                     <div class="video-container">
                         <video class="video" ref="video" autoplay></video>
@@ -43,8 +52,8 @@
 </template>
 
 <script>
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
+import {getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import {collection, query, where, getDocs, addDoc} from 'firebase/firestore';
 import {auth, db} from "../main";
 
 
@@ -52,7 +61,7 @@ export default {
     data() {
         return {
             photo: null,
-            constraints: { video: { facingMode: "environment" } },
+            constraints: {video: {facingMode: "environment"}},
             stream: null,
             userEmail: null,
         }
@@ -66,33 +75,38 @@ export default {
             const animalBirthDate = dodawanie.animalBirthDate.value;
             const animalPhoto = dodawanie.animalPhoto.files[0];
             let animalPhotoLink = null;
-
-            const usersRef = collection(db, 'users');
-            const q = query(usersRef, where('email', '==', this.email));
-            const querySnapshot = await getDocs(q);
-            querySnapshot.forEach(async (doc) => {
-                console.log(`Owners ID: ${doc.id}`);
-                const animalsRef = collection(doc.ref, 'animals');
-                try {
-                    const storage = getStorage();
-                    const storageRef = ref(storage, animalPhoto.name);
-                    await uploadBytes(storageRef, animalPhoto).then(() => {
-                        console.log('Uploaded a file!');
-                    });
-                    animalPhotoLink = await getDownloadURL(storageRef);
-                    const docRef = await addDoc(animalsRef, {
-                        animalName: animalName,
-                        animalSpecies: animalSpecies,
-                        animalGender: animalGender,
-                        animalBirthDate: animalBirthDate,
-                        animalPhotoLink: animalPhotoLink
-                    });
-                    console.log(`Collection added with ID: ${docRef.id}`);
-                } catch (error) {
-                    console.error(error);
-                }
-            });
-            dodawanie.reset();
+            // console.log(animalName);
+            // if (animalName != null && animalSpecies != null) {
+            // if (!animalName && !animalSpecies && !animalGender && !animalBirthDate && !animalPhoto) {
+                const usersRef = collection(db, 'users');
+                const q = query(usersRef, where('email', '==', this.email));
+                const querySnapshot = await getDocs(q);
+                querySnapshot.forEach(async (doc) => {
+                    console.log(`Owners ID: ${doc.id}`);
+                    const animalsRef = collection(doc.ref, 'animals');
+                    try {
+                        const storage = getStorage();
+                        const storageRef = ref(storage, animalPhoto.name);
+                        await uploadBytes(storageRef, animalPhoto).then(() => {
+                            console.log('Uploaded a file!');
+                        });
+                        animalPhotoLink = await getDownloadURL(storageRef);
+                        const docRef = await addDoc(animalsRef, {
+                            animalName: animalName,
+                            animalSpecies: animalSpecies,
+                            animalGender: animalGender,
+                            animalBirthDate: animalBirthDate,
+                            animalPhotoLink: animalPhotoLink
+                        });
+                        console.log(`Collection added with ID: ${docRef.id}`);
+                    } catch (error) {
+                        console.error(error);
+                    }
+                });
+                dodawanie.reset();
+            // } else {
+            //     alert(`All fields are required!`);
+            // }
         },
         takePhoto() {
             const canvas = document.createElement("canvas");
@@ -173,7 +187,7 @@ export default {
 
 .buttonPhoto, .buttonStartCam {
     border: 2px solid black;
-    color:white;
+    color: white;
     background-color: #2196F3;
     padding: 12px 24px;
     font-weight: bold;
@@ -184,9 +198,10 @@ export default {
     cursor: pointer;
     border-radius: 15px;
 }
-.download-button{
+
+.download-button {
     border: 2px solid black;
-    color:white;
+    color: white;
     background-color: rgb(42, 182, 42);
     padding: 12px 24px;
     font-weight: bold;
