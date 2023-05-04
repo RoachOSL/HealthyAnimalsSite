@@ -4,20 +4,20 @@
   "description": "My First PWA",
   "icons": [
     {
-      "src": "/assets/Logo-2ce7b6f0.jpg",
+      "src": "images/manifestLogo-192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "/assets/Logo-2ce7b6f0.jpg",
+      "src": "images/manifestLogo-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
     }
   ],
-  "start_url": "/index.html",
-  "scope":"/index.html",
+  "start_url": "./index.html",
+  "scope":"./",
   "background_color": "black",
   "display": "standalone",
   "theme_color": "white"
