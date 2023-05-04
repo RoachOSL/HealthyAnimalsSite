@@ -12,7 +12,9 @@ self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
     caches.open(staticHealAnima).then(cache => {
       cache.addAll(assets)
-    })
+    }).catch(error => {
+      console.log("Failed to cache assets:", error);
+    })  
   )
 })
 
