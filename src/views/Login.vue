@@ -12,7 +12,7 @@
                         name="logInPassword" required>
                 </div>
                 <div class="col-sm-12 col-md-12">
-                    <button type="button" @click="logInWithEmailAndPassword()">Log in</button>
+                    <button type="button" @click="logInWithEmailAndPassword()"  class="btn btn-login">Log in</button>
                 </div>
             </div>
         </form>
@@ -24,9 +24,9 @@
 
         <form id="registerForm">
             <div class="row">
-                <div class="col-sm-12 col-md-12">
-                    <label for="registerName" class="col-sm-2 col-form-label">Name:</label>
-                    <input type="text" class="form-control" id="registerName" name="registerName" required>
+                <div class="col-sm-6 col-md-6">
+                    <label for="registerName">Name:</label>
+                    <input type="text-name" class="form-control" id="registerName" name="registerName" required>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <label for="registerEmail">E-mail:</label>
@@ -47,6 +47,7 @@
 
     </div>
 </template>
+
 
 <script>
 

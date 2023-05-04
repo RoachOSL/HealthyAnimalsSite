@@ -1,10 +1,8 @@
 <script >
-// import { user } from '../App.vue';
-// import { user } from '../views/Login.vue';
 import { RouterView, RouterLink } from 'vue-router';
 import {auth} from "../main";
 
-export default {
+export default{
     name: 'LoggedContent',
     data() {
         return {

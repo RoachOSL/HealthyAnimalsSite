@@ -186,14 +186,24 @@ button[type="submit"] {
   background-color: #3e8e41;
 }
 
+#registerForm button {
+  margin-top: 20px;
+  font-size: 20px;
+  padding: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 label,
 input[type="text"],
-input[type="name"],
 input[type="email"],
-input[type="password"] {
-  font-size: 1.3rem;
-}
-label[for="register-name"] {
+input[type="password"] input[type="text-name"] {
   font-size: 1.3rem;
 }
 
@@ -256,8 +266,27 @@ label[for="register-name"] {
   margin-bottom: 10px;
 }
 
+#logInForm input[type="email"],
+#logInForm input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 8px;
+  font-size: 16px;
+}
 
-
-
-
-
+.btn-login {
+  margin-top: 20px;
+  font-size: 20px;
+  padding: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
