@@ -1,9 +1,12 @@
 const staticHealAnima = "dev-healthy-animal-site-v1"
 const assets = [
-  "/index.html",
-  "/src/assets/main.css",
-  "/src/main.js",
-  "/images/logo.jpg",
+  "/HealthyAnimalsSite/index.html",
+  "/HealthyAnimalsSite/src/assets/main.css",
+  "/HealthyAnimalsSite/src/main.js",
+  "/HealthyAnimalsSite/images/logo.jpg",
+  "/HealthyAnimalsSite/images/Cat.jpg",
+  "/HealthyAnimalsSite/images/Dog.jpg",
+  "/HealthyAnimalsSite/images/guineaPig.jpg",
   "/HealthyAnimalsSite/manifestLogo-192.png",
   "/HealthyAnimalsSite/manifestLogo-512.png"
 ]
@@ -12,6 +15,9 @@ self.addEventListener("install", installEvent => {
   installEvent.waitUntil(
     caches.open(staticHealAnima).then(cache => {
       cache.addAll(assets)
+        .catch(error => {
+          console.error('Error adding assets to cache:', error);
+        });
     })
   )
 })
