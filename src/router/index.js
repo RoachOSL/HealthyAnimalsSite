@@ -68,4 +68,11 @@ const router = createRouter({
   ],
 });
 
+
+// Add Permissions-Policy header to every route
+router.beforeEach((to, from, next) => {
+  document.querySelector('meta[name="Permissions-Policy"]').setAttribute("content", "interest-cohort=(self)")
+  next()
+})
+
 export default router;

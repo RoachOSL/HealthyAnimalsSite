@@ -22,13 +22,6 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     assetsInlineLimit: 0,
-    rollupOptions: {
-      input: {
-        main: './src/main.js',
-        'manifestLogo-192': './images/manifestLogo-192.png',
-        'manifestLogo-512': './images/manifestLogo-512.png',
-      },
-    },
   },
   optimizeDeps: {
     include: ['leaflet'], // Add Leaflet to the list of dependencies to optimize
