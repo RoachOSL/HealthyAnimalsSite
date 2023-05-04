@@ -25,6 +25,6 @@ export default defineConfig({
   },
   serviceWorker: {
     src: './src/sw.js',
-    scope: '/'
+    scope: '/HealthyAnimalsSite/'
   }
 });
