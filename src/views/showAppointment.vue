@@ -12,10 +12,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="appointment in appointments" :key="appointment.id">
-              <td>{{ appointment.animal }}</td>
+            <tr v-for="appointment in appointments" :key="appointment.owner">
+              <td>{{ appointment.animalName }}</td>
               <td>{{ appointment.date }}</td>
-              <td>{{ appointment.vet }}</td>
+              <td>{{ appointment.vetName }}</td>
             </tr>
           </tbody>
         </table>
@@ -25,45 +25,55 @@
 </template>
 
 <script>
+import { collection, getDocs } from 'firebase/firestore';
+import {auth, db} from "../main";
+
 export default {
-  name: "AppointmentList",
+  name: "AppointmentsList",
   data() {
-    return {
-      newAppointment: {
-        animal: "",
-        date: "",
-        vet: "",
-      },
-      appointments: [
-        {
-          animal: "Rufik",
-          date: "11.05.2023",
-          vet: "Franciszek",
-        },
-      ],
-    };
+      return {
+          appointments: [],
+      };
   },
   created() {
     this.getAppointments();
   },
   methods: {
-    async addAppointment() {
-      const db = firebase.firestore();
-      const appointmentRef = db.collection("appointments").doc();
-      this.newAppointment.id = appointmentRef.id;
-      await appointmentRef.set(this.newAppointment);
-      this.newAppointment = {
-        animal: "",
-        date: "",
-        vet: "",
-      };
-      this.getAppointments();
-    },
-    async getAppointments() {
-      const db = firebase.firestore();
-      const appointmentCollection = await db.collection("appointments").get();
-      this.appointments = appointmentCollection.docs.map((doc) => doc.data());
-    },
+      async getAppointments() {
+          const querySnapshot = await getDocs(collection(db, 'appointments'));
+          const user = auth.currentUser;
+
+          const formatTimestamp = (timestamp) => {
+              const date = new Date(timestamp.seconds * 1000);
+              const year = date.getFullYear();
+              const month = ('0' + (date.getMonth() + 1)).slice(-2);
+              const day = ('0' + date.getDate()).slice(-2);
+              const hours = ('0' + date.getHours()).slice(-2);
+              const minutes = ('0' + date.getMinutes()).slice(-2);
+              return `${year}-${month}-${day} ${hours}:${minutes}`;
+          }
+
+          if (user) {
+              this.email = user.email;
+              querySnapshot.forEach((doc) => {
+                  const data = doc.data();
+                  if (data.owner === user.email) {
+                      this.appointments.push({
+                          animalName: data.animalName,
+                          date: formatTimestamp(data.date),
+                          owner: data.owner,
+                          vetName: data.vetName,
+                      });
+                  }
+              });
+          }
+      },
   },
+    mounted() {
+        const user = auth.currentUser;
+        if (user) {
+            this.email = user.email;
+        }
+    },
 };
 </script>

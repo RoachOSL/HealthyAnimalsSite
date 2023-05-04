@@ -6,7 +6,7 @@ import LoggedContent from "../views/loggedContent.vue";
 import Login from "../views/Login.vue";
 import addAnimal from "../views/addAnimal.vue";
 import makeAppointment from "../views/makeAppointment.vue";
-import showPets from "../views/showPets.vue";
+import showAnimals from "../views/showAnimals.vue";
 import showAppointment from "../views/showAppointment.vue";
 import findVet from "../views/findVet.vue"
 
@@ -51,9 +51,9 @@ const router = createRouter({
         component: makeAppointment,
     },
     {
-        path: "/showPets",
-        name: "shPet",
-        component: showPets,
+        path: "/showAnimals",
+        name: "shAnimal",
+        component: showAnimals,
     },
     {
         path: "/showAppointment",

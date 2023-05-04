@@ -1,35 +1,31 @@
 <template>
     <div class="container">
-        <form>
+        <form id="dodawanieForm">
             <div class="add-animal">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <label for="animalName">Imię zwierzaka:</label><input type="text" class="form-control" id="animalName" name="animalName" required>
                         </div>
                         <div class="form-group">
-                            <label for="species">Species:</label>
-                            <input type="text" class="form-control" id="species" name="species" required>
+                            <label for="animalSpecies">Gatunek:</label><input type="text" class="form-control" id="animalSpecies" name="animalSpecies" required>
                         </div>
                         <div class="form-group">
-                            <label for="gender">Gender:</label>
-                            <select class="form-control" id="gender" name="gender" required>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                            <label for="animalGender">Płeć:</label>
+                            <select class="form-control" id="animalGender" name="animalGender" required>
+                                <option value="samiec">Samiec</option>
+                                <option value="samica">Samica</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="birthdate">Birthdate:</label>
-                            <input type="date" class="form-control" id="birthdate" name="birthdate" required>
+                            <label for="animalBirthDate">Data urodzenia:</label><input type="date" class="form-control" id="animalBirthDate" name="animalBirthDate" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="photo">Photo:</label>
-                        <input type="file" class="form-control-file" id="photo" name="photo">
+                        <label for="animalPhoto">Zdjęcie zwierzaka:</label><input type="file" class="form-control-file" id="animalPhoto" name="animalPhoto" required>
                     </div>
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary">Add Animal</button>
+                        <button type="button" class="btn btn-primary" @click="addAnimalToLoggedUser()">Dodaj zwierzaka!</button>
                     </div>
                     <div class="video-container">
                         <video class="video" ref="video" autoplay></video>
@@ -45,6 +41,94 @@
         </form>
     </div>
 </template>
+
+<script>
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
+import {auth, db} from "../main";
+
+
+export default {
+    data() {
+        return {
+            photo: null,
+            constraints: { video: { facingMode: "environment" } },
+            stream: null,
+            userEmail: null,
+        }
+    },
+    methods: {
+        async addAnimalToLoggedUser() {
+            const dodawanie = document.getElementById('dodawanieForm');
+            const animalName = dodawanie.animalName.value;
+            const animalSpecies = dodawanie.animalSpecies.value;
+            const animalGender = dodawanie.animalGender.value;
+            const animalBirthDate = dodawanie.animalBirthDate.value;
+            const animalPhoto = dodawanie.animalPhoto.files[0];
+            let animalPhotoLink = null;
+
+            const usersRef = collection(db, 'users');
+            const q = query(usersRef, where('email', '==', this.email));
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach(async (doc) => {
+                console.log(`Owners ID: ${doc.id}`);
+                const animalsRef = collection(doc.ref, 'animals');
+                try {
+                    const storage = getStorage();
+                    const storageRef = ref(storage, animalPhoto.name);
+                    await uploadBytes(storageRef, animalPhoto).then(() => {
+                        console.log('Uploaded a file!');
+                    });
+                    animalPhotoLink = await getDownloadURL(storageRef);
+                    const docRef = await addDoc(animalsRef, {
+                        animalName: animalName,
+                        animalSpecies: animalSpecies,
+                        animalGender: animalGender,
+                        animalBirthDate: animalBirthDate,
+                        animalPhotoLink: animalPhotoLink
+                    });
+                    console.log(`Collection added with ID: ${docRef.id}`);
+                } catch (error) {
+                    console.error(error);
+                }
+            });
+            dodawanie.reset();
+        },
+        takePhoto() {
+            const canvas = document.createElement("canvas");
+            canvas.width = this.$refs.video.videoWidth;
+            canvas.height = this.$refs.video.videoHeight;
+            canvas.getContext("2d").drawImage(this.$refs.video, 0, 0);
+            this.photo = canvas.toDataURL("image/jpeg");
+        },
+        stopCamera() {
+            if (this.stream) {
+                const tracks = this.stream.getTracks();
+                tracks.forEach(track => track.stop());
+                this.$refs.video.srcObject = null;
+                this.stream = null;
+            }
+        },
+        startCamera() {
+            navigator.mediaDevices.getUserMedia(this.constraints)
+                .then(stream => {
+                    this.$refs.video.srcObject = stream;
+                    this.stream = stream;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    },
+    mounted() {
+        this.startCamera();
+        const user = auth.currentUser;
+        if (user) {
+            this.email = user.email;
+        }
+    },
+}
+</script>
 
 <style scoped>
 .video-container {
@@ -127,48 +211,4 @@
     cursor: pointer;
     border-radius: 15px;
 }
-
-
 </style>
-
-<script>
-export default {
-    data() {
-        return {
-            photo: null,
-            constraints: { video: { facingMode: "environment" } },
-            stream: null
-        };
-    },
-    mounted() {
-        this.startCamera();
-    },
-    methods: {
-        takePhoto() {
-            const canvas = document.createElement("canvas");
-            canvas.width = this.$refs.video.videoWidth;
-            canvas.height = this.$refs.video.videoHeight;
-            canvas.getContext("2d").drawImage(this.$refs.video, 0, 0);
-            this.photo = canvas.toDataURL("image/jpeg");
-        },
-        stopCamera() {
-            if (this.stream) {
-                const tracks = this.stream.getTracks();
-                tracks.forEach(track => track.stop());
-                this.$refs.video.srcObject = null;
-                this.stream = null;
-            }
-        },
-        startCamera() {
-            navigator.mediaDevices.getUserMedia(this.constraints)
-                .then(stream => {
-                    this.$refs.video.srcObject = stream;
-                    this.stream = stream;
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        }
-    }
-};
-</script>
