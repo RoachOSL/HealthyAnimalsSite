@@ -45,15 +45,11 @@
             <button type="button" @click="registerWithEmailAndPassword()" class="btn btn-primary">Register</button>
         </form>
 
-<!--        <h1>Wyloguj się</h1>-->
-<!--        <form id="signOutForm">-->
-<!--            <button type="button" @click="logOut()">Wyloguj!</button>-->
-<!--        </form>-->
     </div>
 </template>
 
 <script>
-// Import the functions you need from the SDKs you need
+
 import {collection, addDoc, query, where, getDocs} from "firebase/firestore";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 import {auth, db} from "../main";
@@ -86,11 +82,11 @@ export default {
                         const errorCode = error.code;
                         const errorMessage = error.message;
                         console.log(errorCode + ' - ' + errorMessage);
-                        alert('Błąd rejestracji - ' + errorCode + ' - ' + errorMessage);
+                        alert('Registration error - ' + errorCode + ' - ' + errorMessage);
                     });
             }
             else {
-                alert('Różne hasła');
+                alert('Different passwords');
             }
             rejestracja.reset();
         },
@@ -107,7 +103,7 @@ export default {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     console.log(errorCode + ' - ' + errorMessage);
-                    alert('Błąd logowania - ' + errorCode + ' - ' + errorMessage);
+                    alert('Login error - ' + errorCode + ' - ' + errorMessage);
                 });
             logowanie.reset();
         },
@@ -134,16 +130,9 @@ export default {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     console.log(errorCode + ' - ' + errorMessage);
-                    alert('Błąd rejestracji przez Google - ' + errorCode + ' - ' + errorMessage);
+                    alert('Google registration error - ' + errorCode + ' - ' + errorMessage);
                 });
         },
-        // logOut() {
-        //     auth.signOut()
-        //         .then(() => {
-        //             console.log(`User logged out.`);
-        //         });
-        //     this.user = null;
-        // },
     },
     mounted() {
         onAuthStateChanged(auth, (user) => {
