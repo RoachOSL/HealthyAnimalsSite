@@ -1,9 +1,9 @@
 const staticHealAnima = "dev-healthy-animal-site-v1"
 const assets = [
-  "/index.html",
-  "/src/assets/main.css",
-  "/src/main.js",
-  "/images/logo.jpg",
+  "/HealthyAnimalsSite/index.html",
+  "/HealthyAnimalsSite/src/assets/main.css",
+  "/HealthyAnimalsSite/src/main.js",
+  "/HealthyAnimalsSite/images/logo.jpg",
   "/HealthyAnimalsSite/manifestLogo-192.png",
   "/HealthyAnimalsSite/manifestLogo-512.png"
 ]
