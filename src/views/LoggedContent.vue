@@ -1,12 +1,20 @@
 <script >
-import { user } from '../App.vue';
+// import { user } from '../App.vue';
+// import { user } from '../views/Login.vue';
 import { RouterView, RouterLink } from 'vue-router';
+import {auth} from "@/main";
 
 export default {
     name: 'LoggedContent',
-    computed: {
-        currentUser() {
-            return user;
+    data() {
+        return {
+            userEmail: null
+        }
+    },
+    mounted() {
+        const user = auth.currentUser;
+        if (user) {
+            this.email = user.email;
         }
     },
 };
@@ -18,7 +26,7 @@ export default {
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-12">
-                <h2>Welcome {{ currentUser }} !!</h2>
+                <h2>Welcome!!</h2>
             </div>
         </div>
     </div>
@@ -35,7 +43,7 @@ export default {
                         <RouterLink class="router-link" to="/addAnimal">Add animal</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="router-link" to="/showPets">Show pets</RouterLink>
+                        <RouterLink class="router-link" to="/showAnimals">Show animals</RouterLink>
                     </li>
                     <li>
                         <RouterLink class="router-link" to="/makeAppointment">Make an appointment</RouterLink>

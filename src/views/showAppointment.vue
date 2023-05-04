@@ -1,67 +1,68 @@
 <template>
     <div class="container">
-   <h2>List of Pets</h2>
-   <div class="row">
-     <div class="col-md-8">
-       <table class="table">
-         <thead>
-           <tr>
-             <th>Name</th>
-             <th>Type</th>
-             <th>Age</th>
-           </tr>
-         </thead>
-         <tbody>
-           <tr v-for="pet in pets" :key="pet.id">
-             <td>{{ pet.name }}</td>
-             <td>{{ pet.type }}</td>
-             <td>{{ pet.age }}</td>
-           </tr>
-         </tbody>
-       </table>
-     </div>
-   </div>
- </div>
+        <h2>Lista wizyt</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Imię zwierzaka</th>
+                        <th>Data</th>
+                        <th>Imię weterynarza</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="appointment in appointments" :key="appointment.owner">
+                        <td>{{ appointment.animalName }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.vetName }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 </template>
 <script>
+import { collection, getDocs } from 'firebase/firestore';
+import { auth, db } from "@/main";
+
 export default {
-   name: "PetList",
-   data() {
-     return {
-       newPet: {
-         name: "",
-         type: "",
-         age: null,
-       },
-       pets: [{
-         name: "Oskar",
-         type: "Dog",
-         age: 18,
-       }],
-     };
-   },
-   created() {
-     this.getPets();
-   },
-   methods: {
-     async addPet() {
-       const db = firebase.firestore();
-       const petRef = db.collection("pets").doc();
-       this.newPet.id = petRef.id;
-       await petRef.set(this.newPet);
-       this.newPet = {
-         name: "",
-         type: "",
-         age: null,
-       };
-       this.getPets();
-     },
-     async getPets() {
-       const db = firebase.firestore();
-       const petCollection = await db.collection("pets").get();
-       this.pets = petCollection.docs.map((doc) => doc.data());
-     },
-   },
- };
- </script>
+    name: "AppointmentsList",
+    data() {
+        return {
+            appointments: [],
+        };
+    },
+    created() {
+        this.getAppointments();
+    },
+    methods: {
+        async getAppointments() {
+            const querySnapshot = await getDocs(collection(db, 'appointments'));
+            const user = auth.currentUser;
+            if (user) {
+                this.email = user.email;
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    if (data.owner === user.email) {
+                        this.appointments.push({
+                            animalName: data.animalName,
+                            date: data.date,
+                            owner: data.owner,
+                            vetName: data.vetName,
+                        });
+                    }
+                });
+            }
+        },
+    },
+    mounted() {
+        const user = auth.currentUser;
+        if (user) {
+            this.email = user.email;
+        }
+    },
+};
+</script>
