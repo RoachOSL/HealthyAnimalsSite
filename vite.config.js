@@ -23,26 +23,4 @@ export default defineConfig({
     include: ['leaflet'], // Add Leaflet to the list of dependencies to optimize
   },
   publicDir: 'public', // Specify the location of the public directory containing the manifest file
-  manifest: {
-    name: 'Healthy Animals',
-    short_name: 'HealAnima',
-    description: 'My First PWA',
-    theme_color: '#ffffff',
-    icons: [
-      {
-        src: '/images/manifestLogo-192.png',
-        sizes: '192x192',
-        type: 'image/png',
-        purpose: 'any maskable'
-      },
-      {
-        src: '/images/manifestLogo-512.png',
-        sizes: '512x512',
-        type: 'image/png',
-        purpose: 'any maskable'
-      }
-    ],
-    start_url: '/HealthyAnimalsSite/',
-    display: 'standalone'
-  }
 });

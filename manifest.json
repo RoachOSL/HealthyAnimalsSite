@@ -16,8 +16,8 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "./index.html",
-  "scope":"./",
+  "start_url": "/HealthyAnimalsSite/",
+  "scope":"/HealthyAnimalsSite/",
   "background_color": "black",
   "display": "standalone",
   "theme_color": "white"
