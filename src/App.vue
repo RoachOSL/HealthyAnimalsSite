@@ -1,11 +1,11 @@
 <script setup>
-import {RouterView, RouterLink} from 'vue-router';
+import { RouterView, RouterLink } from 'vue-router';
 import LoggedContent from "../src/views/LoggedContent.vue";
 
 </script>
 <script>
-import {auth} from "@/main";
 import {onAuthStateChanged} from "firebase/auth";
+import {auth} from "./main";
 
 export default {
     data() {

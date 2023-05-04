@@ -1,30 +1,48 @@
 <template>
     <div class="container col-sm-4 col-md-4 text-center">
-        <h1>Zaloguj się emailem!</h1>
+        <h1>Login form:</h1>
         <form id="logInForm">
-            <div class="container">
-                <label for="logInEmail">Email: </label><input type="email" id="logInEmail" name="logInEmail" required>
-            </div>
-            <div class="container">
-                <label for="logInPassword">Hasło: </label><input type="password" id="logInPassword" name="logInPassword" required>
-            </div>
-            <div class="container">
-                <button type="button" @click="logInWithEmailAndPassword()">Zaloguj się!</button>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <label for="logInEmail">Email: </label><input type="email" id="logInEmail" name="logInEmail"
+                        required>
+                </div>
+                <div class="col-sm-12 col-md-12">
+                    <label for="logInPassword">Password: </label><input type="password" id="logInPassword"
+                        name="logInPassword" required>
+                </div>
+                <div class="col-sm-12 col-md-12">
+                    <button type="button" @click="logInWithEmailAndPassword()">Log in</button>
+                </div>
             </div>
         </form>
 
-        <h1>Zaloguj się przez Google!</h1>
-        <form id="registerGoogleForm">
-            <button type="button" @click="signInWithGoogle()">Sign In with Google</button>
-        </form>
+        <h1>Sign in with Google!</h1>
+        <button id="login-google" @click="signInWithGoogle()">Sign In with Google</button>
 
-        <h1>Zarejestruj się</h1>
+        <h1>Registration form:</h1>
+
         <form id="registerForm">
-            <label for="registerEmail">e-mail</label><input type="email" id="registerEmail" name="registerEmail" required>
-            <label for="registerPassword">Hasło</label><input type="password" id="registerPassword" name="registerPassword" required><br>
-            <label for="registerPasswordRepeat">Powtórz hasło</label><input type="password" id="registerPasswordRepeat" name="registerPasswordRepeat" required>
-            <label for="registerName">Imię</label><input type="text" id="registerName" name="registerName" required><br>
-            <button type="button" @click="registerWithEmailAndPassword()">Zarejestruj</button>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <label for="registerName" class="col-sm-2 col-form-label">Name:</label>
+                    <input type="text" class="form-control" id="registerName" name="registerName" required>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <label for="registerEmail">E-mail:</label>
+                    <input type="email" class="form-control" id="registerEmail" name="registerEmail" required>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <label for="registerPassword">Password:</label>
+                    <input type="password" class="form-control" id="registerPassword" name="registerPassword" required>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <label for="registerPasswordRepeat">Repeat password:</label>
+                    <input type="password" class="form-control" id="registerPasswordRepeat"
+                        name="registerPasswordRepeat" required>
+                </div>
+            </div>
+            <button type="button" @click="registerWithEmailAndPassword()" class="btn btn-primary">Register</button>
         </form>
 
 <!--        <h1>Wyloguj się</h1>-->
@@ -38,7 +56,7 @@
 // Import the functions you need from the SDKs you need
 import {collection, addDoc, query, where, getDocs} from "firebase/firestore";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
-import { db, auth } from "@/main";
+import {auth, db} from "../main";
 
 export default {
     data() {

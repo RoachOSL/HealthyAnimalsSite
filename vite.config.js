@@ -1,15 +1,30 @@
-import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-
-// https://vitejs.dev/config/
 export default defineConfig({
   base: "/HealthyAnimalsSite/",
-  plugins: [vue()],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+  plugins: [
+    vue()
+  ],
+  optimizeDeps: {
+    include: ['leaflet'], // Add Leaflet to the list of dependencies to optimize
+  },
+  publicDir: 'public',
+  build: {
+    rollupOptions: {
+      input: {
+        main: './index.html'
+      },
+      output: {
+        manualChunks: undefined
+      }
     }
+  },
+  manifest: {
+    src: './public/manifest.json'
+  },
+  serviceWorker: {
+    src: './src/sw.js',
+    scope: '/HealthyAnimalsSite/'
   }
-})
+});

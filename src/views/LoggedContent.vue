@@ -2,7 +2,7 @@
 // import { user } from '../App.vue';
 // import { user } from '../views/Login.vue';
 import { RouterView, RouterLink } from 'vue-router';
-import {auth} from "@/main";
+import {auth} from "../main";
 
 export default {
     name: 'LoggedContent',
@@ -37,19 +37,19 @@ export default {
             <div class="sidebar">
                 <ul>
                     <li>
-                        <RouterLink class="router-link" to="">Find vet</RouterLink>
+                        <RouterLink class="sidebar-link" to="/findVet">Find vet</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="router-link" to="/addAnimal">Add animal</RouterLink>
+                        <RouterLink class="sidebar-link" to="/addAnimal">Add animal</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="router-link" to="/showAnimals">Show animals</RouterLink>
+                        <RouterLink class="sidebar-link" to="/showAnimals">Show animals</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="router-link" to="/makeAppointment">Make an appointment</RouterLink>
+                        <RouterLink class="sidebar-link" to="/makeAppointment">Make an appointment</RouterLink>
                     </li>
                     <li>
-                        <RouterLink class="router-link" to="/showAppointment">Show an appointment</RouterLink>
+                        <RouterLink class="sidebar-link" to="/showAppointment">Show appointments</RouterLink>
                     </li>
                 </ul>
             </div>

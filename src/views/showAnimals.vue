@@ -1,36 +1,35 @@
 <template>
     <div class="container">
-        <h2>Lista zwierzaków</h2>
+        <h2>List of Animals</h2>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Imię</th>
-                        <th>Gatunek</th>
-                        <th>Płeć</th>
-                        <th>Data urodzenia</th>
-                        <th>Zdjęcie zwierzaka</th>
+                        <th>Name</th>
+                        <th>Species</th>
+                        <th>Gender</th>
+                        <th>Birth Date</th>
+                        <th>Animal Photo</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="animals in animals" :key="animals.name">
-                        <td>{{ animals.animalName }}</td>
-                        <td>{{ animals.animalSpecies }}</td>
-                        <td>{{ animals.animalGender }}</td>
-                        <td>{{ animals.animalBirthDate }}</td>
-                        <td><img :src="animals.animalPhotoLink" :style="{ maxWidth: '100px', maxHeight: '100px' }" alt="Animal image"></td>
+                    <tr v-for="animal in animals" :key="animal.name">
+                        <td>{{ animal.animalName }}</td>
+                        <td>{{ animal.animalSpecies }}</td>
+                        <td>{{ animal.animalGender }}</td>
+                        <td>{{ animal.animalBirthDate }}</td>
+                        <td><img :src="animal.animalPhotoLink" :style="{ maxWidth: '100px', maxHeight: '100px' }" alt="Animal image"></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
 </template>
 <script>
 import {collection, getDocs, query, where} from "firebase/firestore";
-import {auth, db} from "@/main";
+import {auth, db} from "../main";
 
 export default {
     name: "AnimalsList",
