@@ -2,34 +2,39 @@
     <div class="container">
         <h2>List of Animals</h2>
         <div class="row">
-            <div class="col-md-12">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Species</th>
-                        <th>Gender</th>
-                        <th>Birth Date</th>
-                        <th>Animal Photo</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="animal in animals" :key="animal.name">
-                        <td>{{ animal.animalName }}</td>
-                        <td>{{ animal.animalSpecies }}</td>
-                        <td>{{ animal.animalGender }}</td>
-                        <td>{{ animal.animalBirthDate }}</td>
-                        <td><img :src="animal.animalPhotoLink" :style="{ maxWidth: '100px', maxHeight: '100px' }" alt="Animal image"></td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="col-sm-12 col-md-12">
+                <div class="table-responsive-sm">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Species</th>
+                                <th>Gender</th>
+                                <th>Birth Date</th>
+                                <th>Animal Photo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="animal in animals" :key="animal.name">
+                                <td>{{ animal.animalName }}</td>
+                                <td>{{ animal.animalSpecies }}</td>
+                                <td>{{ animal.animalGender }}</td>
+                                <td>{{ animal.animalBirthDate }}</td>
+                                <td><img :src="animal.animalPhotoLink" :style="{ maxWidth: '100px', maxHeight: '100px' }"
+                                        alt="Animal image"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
             </div>
         </div>
     </div>
 </template>
 <script>
-import {collection, getDocs, query, where} from "firebase/firestore";
-import {auth, db} from "../main";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { auth, db } from "../main";
 
 export default {
     name: "AnimalsList",

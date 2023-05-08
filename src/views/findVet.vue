@@ -1,5 +1,7 @@
 <template>
-    <div class="map"></div>
+    <div class="col-sm-12 col-md-12">
+        <div class="map"></div>
+    </div>
 </template>
   
 <script>
@@ -62,8 +64,14 @@ export default {
 }
 </script>
   
-<style>
+<style scoped>
 .map {
     height: 500px;
+}
+
+@media (max-width: 768px) {
+    .map {
+        height: 350px;
+    }
 }
 </style>
