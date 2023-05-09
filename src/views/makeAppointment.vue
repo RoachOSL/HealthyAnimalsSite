@@ -8,17 +8,17 @@
                         <div class="form-group">
                             <label for="appoAnimalName">Animal name:</label>
                             <input type="text" class="form-control" id="appoAnimalName" placeholder="Enter name"
-                                   name="appoAnimalName" required>
+                                name="appoAnimalName" required>
                         </div>
                         <div class="form-group">
                             <label for="appoDate">Date of Visit:</label>
                             <input type="datetime-local" class="form-control" id="appoDate" placeholder="Enter date"
-                                   name="appoDate" required>
+                                name="appoDate" required>
                         </div>
                         <div class="form-group">
                             <label for="appoVetName">Vet Doc Name:</label>
                             <input type="text" class="form-control" id="appoVetName" placeholder="Enter vet name"
-                                   name="appoVetName" required>
+                                name="appoVetName" required>
                         </div>
                         <button type="button" class="btn btn-primary" @click="saveAppointment()">Submit</button>
                     </div>
@@ -29,8 +29,8 @@
 </template>
 <script>
 // Import the functions you need from the SDKs you need
-import {collection, addDoc, Timestamp} from 'firebase/firestore';
-import {auth, db} from "../main";
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
+import { auth, db } from "../main";
 
 
 export default {

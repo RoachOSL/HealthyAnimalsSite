@@ -4,15 +4,14 @@
         <form id="logInForm">
             <div class="row">
                 <div class="col-sm-12 col-md-12">
-                    <label for="logInEmail">Email: </label><input type="email" id="logInEmail" name="logInEmail"
-                        required>
+                    <label for="logInEmail">Email: </label><input type="email" id="logInEmail" name="logInEmail" required>
                 </div>
                 <div class="col-sm-12 col-md-12">
                     <label for="logInPassword">Password: </label><input type="password" id="logInPassword"
                         name="logInPassword" required>
                 </div>
                 <div class="col-sm-12 col-md-12">
-                    <button type="button" @click="logInWithEmailAndPassword()"  class="btn btn-login">Log in</button>
+                    <button type="button" @click="logInWithEmailAndPassword()" class="btn btn-login">Log in</button>
                 </div>
             </div>
         </form>
@@ -38,8 +37,8 @@
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <label for="registerPasswordRepeat">Repeat password:</label>
-                    <input type="password" class="form-control" id="registerPasswordRepeat"
-                        name="registerPasswordRepeat" required>
+                    <input type="password" class="form-control" id="registerPasswordRepeat" name="registerPasswordRepeat"
+                        required>
                 </div>
             </div>
             <button type="button" @click="registerWithEmailAndPassword()" class="btn btn-primary">Register</button>
@@ -51,9 +50,9 @@
 
 <script>
 
-import {collection, addDoc, query, where, getDocs} from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
-import {auth, db} from "../main";
+import { auth, db } from "../main";
 
 export default {
     data() {

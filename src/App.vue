@@ -4,8 +4,8 @@ import LoggedContent from "../src/views/LoggedContent.vue";
 
 </script>
 <script>
-import {onAuthStateChanged} from "firebase/auth";
-import {auth} from "./main";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./main";
 
 export default {
     data() {
@@ -38,13 +38,12 @@ export default {
     <main>
         <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark text-center">
             <a href="#" class="navbar-brand">
-                <img class="d-inline-block align-top" src="/images/Logo.jpg" alt="logoAnimal" width="50" height="50"/>
+                <img class="d-inline-block align-top" src="/images/Logo.jpg" alt="logoAnimal" width="50" height="50" />
                 Healthy Animals
             </a>
             <div class="container">
-                <button type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu"
-                        class="navbar-toggler"
-                        aria-controls="toggleMobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <button type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu" class="navbar-toggler"
+                    aria-controls="toggleMobileMenu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -73,16 +72,16 @@ export default {
             </div>
         </nav>
 
-        <hr class="border border-2"/>
+        <hr class="border border-2" />
 
         <template v-if="userEmail">
-            <LoggedContent/>
+            <LoggedContent />
         </template>
         <template v-else>
-            <RouterView/>
+            <RouterView />
         </template>
 
-        <hr class="border border-2"/>
+        <hr class="border border-2" />
 
         <footer class="container-fluid">
             <div class="row text-center">

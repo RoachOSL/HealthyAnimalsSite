@@ -6,13 +6,11 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             <label for="animalName">Animal name:</label><input type="text" class="form-control"
-                                                                               id="animalName" name="animalName"
-                                                                               required>
+                                id="animalName" name="animalName" required>
                         </div>
                         <div class="form-group">
                             <label for="animalSpecies">Species:</label><input type="text" class="form-control"
-                                                                              id="animalSpecies" name="animalSpecies"
-                                                                              required>
+                                id="animalSpecies" name="animalSpecies" required>
                         </div>
                         <div class="form-group">
                             <label for="animalGender">Gender:</label>
@@ -23,17 +21,15 @@
                         </div>
                         <div class="form-group">
                             <label for="animalBirthDate">Birth date:</label><input type="date" class="form-control"
-                                                                                   id="animalBirthDate"
-                                                                                   name="animalBirthDate" required>
+                                id="animalBirthDate" name="animalBirthDate" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="animalPhoto">Animal photo:</label><input type="file" class="form-control-file"
-                                                                             id="animalPhoto" name="animalPhoto"
-                                                                             required>
+                            id="animalPhoto" name="animalPhoto" required>
                     </div>
                     <div class="col-md-12">
-                        <button type="button" class="btn btn-primary" @click="addAnimalToLoggedUser()">Add animal!
+                        <button type="button" class="btn btn-primary" @click="addAnimalToLoggedUser()">Submit
                         </button>
                     </div>
                     <div class="video-container">
@@ -52,16 +48,16 @@
 </template>
 
 <script>
-import {getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
-import {collection, query, where, getDocs, addDoc} from 'firebase/firestore';
-import {auth, db} from "../main";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
+import { auth, db } from "../main";
 
 
 export default {
     data() {
         return {
             photo: null,
-            constraints: {video: {facingMode: "environment"}},
+            constraints: { video: { facingMode: "environment" } },
             stream: null,
             userEmail: null,
         }
@@ -183,7 +179,8 @@ export default {
     background-color: #0b7dda;
 }
 
-.buttonPhoto, .buttonStartCam {
+.buttonPhoto,
+.buttonStartCam {
     border: 2px solid black;
     color: white;
     background-color: #2196F3;
